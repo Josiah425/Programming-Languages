@@ -1,0 +1,54 @@
+Josiah Bailey
+
+1. Indicate the binding time (when the language is designed, when the program is linked,
+   when the program begins execution, etc.) for each of the following decisions in your
+   favorite programming language and implementation.  Explain any answers you think are
+   open to interpretation.
+	C++ is my favorite programming language
+	-The number of built-in functions (math, type queries, etc.)
+		At the language-design time
+	-The variable declaration that corresponds to a particular variable reference (use)
+		At the program compilation time
+	-The maximum length allowed for a constant (literal) character string
+		At the language-implementation time
+	-The referencing environment for a subroutine that is passed as a parameter
+		Depends on the deep binding vs shallow binding, deep binding represents an early binding of the referencing environment.
+	-The address of a particular library routine
+		At the linker time
+	-The total amount of space occupied by program code and data
+		At the execution time
+
+Used for reference
+http://web.eecs.utk.edu/~bvz/teaching/cs365Sp12/notes/names.html
+
+2. a. Stack Frame
+      4 i argument
+      8 j argument
+      16 recursive memory space gcdR     
+
+   b. High to low
+
+   c. in gcdR1.s file
+
+3. The recursiveness is not made by calls to the function, instead it updates registers and
+   jumps to a location inside the gcdR function.
+
+4. best fit should be better in general, but both will result in external fragmentation and don't solve the issue altogether.
+
+5.
+
+6.
+
+7.
+
+8.
+
+9.
+
+10.
+
+11.
+
+12.
+
+13.

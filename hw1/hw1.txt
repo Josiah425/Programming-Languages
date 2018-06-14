@@ -1,0 +1,101 @@
+Josiah Bailey
+CS471 Homework 1
+
+1.
+Answered on Quiz 1
+
+2.
+Answered in gcd.s file with annotations
+
+3.
+Program will not always compute the same results as previous program.
+
+int  gcdM(int i, int j) {
+	int r = j;
+	int temp = 0;
+	while(r != 0){
+		temp = r;
+		r = i % r;
+		i = temp;
+	}
+   	return i;
+ }
+
+
+This program would be faster if the numbers a and b are large.
+The program from question 2 would be faster if the numbers are not much larger than each other
+
+4.
+	1.
+ 	int  gcdR(int i, int j) {
+		if(i % j == 0){
+			return j;
+		}
+		else{
+			return gcdR(j, i % j);
+		}
+ 	}
+
+	2. gcdI is O(N) since its linear and decreases linearly with each step.
+	   gcdR is O(log(c)) where c is the larger number between a and b when a and b 
+	   are two Fibonacci numbers we hit the worst case
+
+	3. I would choose recursive implementation if it makes what I'm doing significantly clearer, otherwise
+	   I would just implement iteratively.  Recursive implementation tends to lead to large overhead (at least in C)
+
+5.
+Answered in gcd_full.py and gcd_full.rb
+
+6.
+Size limitation of integer is -2147483648 to 2147483647 2^32 - 1
+
+Arithmetic overflow occurs when a defined variable steps out of its range of possible values
+
+The implications of size limits on portability is that code can't execute the same way 
+on different operating systems or machines.
+
+Java has 32 bit integers
+
+Python has a 32 bit integer and 64 bit integer depending on the system
+
+Ada has 16 bit integers
+
+7.
+a. /*helloWorld is a lexical error since there is no closure to the comment C++
+
+b. int main(){
+	someFunction();
+   }
+   void someFunction(){
+	cout << "Hello world" << endl;
+   }
+
+   There is no prototype for the someFunction, therefore main can't call it C++.
+
+c. int a;
+   char a;
+   
+   can't call two different variables the same name in C++
+
+d. int a[10];
+   cout << a[10] << endl;
+
+   index 10 is out of bounds for array of size 10 in C++.
+
+e. Deallocating memory for an object, and then trying to dereference the now deleted object in C++.
+
+8.
+True, I believe some programs are more powerful in the way they present a model
+Programs can look daunting and be difficult to trace through and understand whats happening
+powerful languages are easy to understand and make the programmers life easier
+
+9.
+a. ack(1, 0) = ack(m-1, 1) = ack(0, 1) = 2
+
+b. ack(0, 3) = 4
+
+c. In ack.c, largest I could find was when m = 3, n = 13 giving 65533, might be larger but it started taking a long time
+
+d. In ack.py, largest I could find was when m = 3, n = 6 giving 509
+
+e. In ack.rb, largest I could find was when m = 3, n = 11 giving 8189

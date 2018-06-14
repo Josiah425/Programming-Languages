@@ -1,0 +1,87 @@
+> module Jbailey8_hw12
+>    where
+
+Due Wed. April 25,2018 @ midnight
+
+In Lab problems a-c:
+
+Problem a:
+Consider the following definition:
+
+> mm f g = (.) (map f) (map g) 
+
+What is the type of
+   mm ((-) 20) ((+) 9) ?
+
+   Answer: Num b => [b] -> [b]
+
+What are the values of 
+   mm ((-) 20) ((+) 9) [3,-2, -9, 50]
+   Answer: [8,13,20,-39]
+
+   mm ((-) 20) ((+) 9) [-3,2, -9, 50]
+   Answer: [14,9,20,-39]
+
+Describe in word what mm does.
+
+	Answer: mm takes each element in the list and maps them to 2 operators
+
+Define mm2 to be equivalent to mm but
+only using only one 'map' application, compose, (.).
+
+> mm2 f g = map (f . g)
+
+Problem b:
+Consider the following definition:
+
+> lc f p  = \lst -> [f x | x<-lst, p x]
+
+What is the type of 
+	lc (\n -> n -1) odd ?
+
+	Answer: Integral a => [a] -> [a]
+
+What are the values of :
+    lc (\n -> n -1) odd [2,33,50,11,23,4]
+
+    Answer: [32,10,22]
+
+    lc (\n -> n -1) ((.) not odd) [2,33,50,11,23,4]
+
+    Answer: [1,49,3]
+
+
+Define hf to be equivalent to lc but use map and filter instead of list comprehension.
+
+> hf f p = map f . filter p
+
+Problem c:
+'sumPRL nums', defined below, produces a list of partial sum 
+  of the numbers in nums. The first value in the resulting list 
+  will be the sum of all the items, the second will be the sum 
+  of all the items except the first, etc.  For example:
+   
+   ...> sumPRL [3,-2,10]
+   [11,8,10]
+
+> sumPRL (l:ls) = sums [l] ls
+>   where
+>    sums (a:as) (n:ns) = sums ((a+n):a:as) ns
+>    sums as []  = as
+
+
+Define sumPRLHOF to be equivalent to sumPRL but using a fold.  
+I have started the sumPRLHOF definition, you only need to
+complete the definition for f.
+
+> sumPRLHOF :: (Num t1, Foldable t) => t t1 -> [t1]
+> sumPRLHOF  = foldr f [] 
+>    where
+>     f  y [] = [y]
+>     f  y (x:xs) = (foldr (+) 0 (x:xs)):(sumPRLHOF xs)
+
+Remember foldr can be defined as follows:
+
+   > foldr :: (a -> b -> b) -> b -> [a] -> b
+   > foldr f acc [] = acc
+   > foldr f acc (x:xs) = f x  (foldr f acc xs) 

@@ -1,0 +1,183 @@
+Josiah Bailey
+CS471 Homework 2
+
+1.
+<expr> ::= <adder>
+<adder> ::= <term> '+' <adder> | <multi>
+<multi> ::= <term> '*' <multi> | <parentheticals>
+<parentheticals ::= (<adder>) | <term>
+<term> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | <term><term>
+
+term is used at end of parentheticals, so you could just add, then go to multi then parentheticals then finish with a term. <term><term> => concatenation
+
+right recursive => right associativity
+
+2.
+<expr> ::= <adder>
+<adder> ::= <term> '+' <adder> | <minus>
+<minus> ::= <term> '-' <minus> | <multi>
+<multi> ::= <term> '*' <multi> | <average>
+<average> ::= <term> '@' <average> | <parentheticals>
+<parentheticals ::= (<adder>) |  (<minus>) | (<multi>) | <term>
+<term> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | <term><term>
+
+3.
+a. expr
+   adder
+   term '+' adder
+   '1' '+' minus
+   '1' '+' term - minus
+   '1' '+' '2' '-' multi
+   '1' '+' '2' '-' average
+   '1' '+' '2' '-' parentheticals
+   '1' '+' '2' '-' term
+   '1' '+' '2' '-' '2'
+
+b. expr
+   adder
+   minus
+   term '-' minus
+   '2' '-' multi
+   '2' '-' term '*' multi
+   '2' '-' '3' '*' average
+   '2' '-' '3' '*' parentheticals
+   '2' '-' '3' '*' term
+   '2' '-' '3' '*' '5'
+
+c. expr
+   adder
+   minus
+   term '-' minus
+   '10' '-' multi
+   '10' '-' average
+   '10' '-' term '@' average
+   '10' '-' '5' '@' parentheticals
+   '10' '-' '5' '@' term
+   '10' '-' '5' '@' '2'
+
+d. expr
+   adder
+   minus
+   term '-' minus
+   '10' '-' term '-' minus
+   '10' '-' '7' '-' term
+   '10' '-' '7' '-' '2'
+   
+4.
+Answer in arith1.c file added two new functions int minus(void) and int average(void)
+
+5.
+<expr> ::= <adder>
+<adder> ::= <term> '+' <adder> * | <multi>
+<multi> ::= <term> '*' <multi> * | <parentheticals>
+<parentheticals ::= (<adder>) | <term>
+<term> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | <term><term>
+
+6.
+<expr> ::= <adder>
+<adder> ::= <term> '+' <adder> * | <minus>
+<minus> ::= <term> '-' <minus> * | <multi>
+<multi> ::= <term> '*' <multi> * | <average>
+<average> ::= <term> '@' <average> * | <parentheticals>
+<parentheticals ::= (<adder>) |  (<minus>) | (<multi>) | <term>
+<term> ::= '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | <term><term>
+
+7.
+a. expr
+   adder
+   term '+' adder
+   '1' '+' minus
+   '1' '+' term '-' minus
+   '1' '+' '2' '-' multi
+   '1' '+' '2' '-' average
+   '1' '+' '2' '-' parentheticals
+   '1' '+' '2' '-' term
+   '1' '+' '2' '-' '2'
+
+b. expr
+   adder
+   minus
+   term '-' minus
+   '2' '-' multi
+   '2' '-' term '*' multi
+   '2' '-' '3' '*' average
+   '2' '-' '3' '*' parentheticals
+   '2' '-' '3' '*' term
+   '2' '-' '3' '*' '5'
+
+c. expr
+   adder
+   minus
+   term '-' minus
+   '10' '-' multi
+   '10' '-' average
+   '10' '-' term '@' average
+   '10' '-' '5' '@' parentheticals
+   '10' '-' '5' '@' term
+   '10' '-' '5' '@' '2'
+
+d. expr
+   adder
+   minus
+   term '-' minus
+   '10' '-' term '-' minus
+   '10' '-' '7' '-' average
+   '10' '-' '7' '-' parentheticals
+   '10' '-' '7' '-' term
+   '10' '-' '7' '-' '2'
+
+8.
+Answer solved in arith2.c added two new functions int minus(void) and int average(void)
+
+9.
+1. [a-z|_]+
+
+2. ["]([^"]|[\"])*["]
+
+3. (a|(b(a*)b))*
+
+4. ( ( (a|b)* ) c ( (a|b)* ))*
+
+10.
+1. _Bool is the actual type for C99, bool is the macro that resolves to _Bool
+
+2. They both exist because for C to avoid having dependency problems
+   the _Bool was made (since its reserved) incase programs used bool before the standard C99 
+   and bool is just the standard to be consistent with other primitive types
+
+3. Neither is better than the other because they both resolve to the same thing.
+
+11.
+A pragma is a command for the compiler that does not affect the execution of the program.
+They are processed by the scanner because they are not a part the programs structure,
+meaning the parse tree would be unnecessarily large for something that doesn't matter to
+the integrity of the program itself.  Providing pragmas in a language change the semantics of
+the program and can cause it to be more complicated.  However, they can also
+turn on or off run time checks and also provide clarity.
+
+12.
+a. + ^ ^ z w x y
+
+b. + w + x * y z
+
+c. * * w x ^ y z
+
+d. * / * w x y z
+
+13.
+a. z w ^ x ^ y +
+
+b. w x y z * + +
+
+c. w x * y z ^ *
+
+d. w x * y / z *
+
+
+
+
+
+
+
+
+
